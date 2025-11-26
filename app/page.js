@@ -12,7 +12,7 @@ export default function Welcome() {
     // Start fading out after 2 seconds
     const fadeTimer = setTimeout(() => {
       setIsFading(true);
-    }, 2000);
+    }, 1500);
 
     // Remove splash screen after fade animation (e.g., 500ms)
     const removeTimer = setTimeout(() => {
