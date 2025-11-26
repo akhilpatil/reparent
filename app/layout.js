@@ -1,4 +1,4 @@
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -13,15 +13,28 @@ const inter = Inter({
   display: "swap",
 });
 
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
 export const metadata = {
   title: "Reparent - Parenting Reflection",
   description: "A reflection tool to help parents understand their patterns and heal their inner child",
 };
 
+import Clouds from "./components/Clouds";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${inter.variable} antialiased font-sans`}>{children}</body>
+      <body className={`${playfair.variable} ${inter.variable} ${manrope.variable} antialiased font-sans`}>
+        <Clouds />
+        <div className="relative z-10">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

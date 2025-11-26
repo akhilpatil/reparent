@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Instructions() {
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-[#fdfbf7] to-[#eef7f2]">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-10 px-6 py-12 text-center max-w-lg mx-auto">
         <div className="animate-fade-in flex flex-col gap-6">
-          <h1 className="text-3xl font-bold text-[#1d3b33] leading-tight" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h1 className="text-3xl font-bold text-[#1d3b33] leading-tight" style={{ fontFamily: "var(--font-heading)" }}>
             Parenting isn’t about being perfect — it’s about being present.
           </h1>
           <div className="flex flex-col gap-4 text-lg text-gray-600">

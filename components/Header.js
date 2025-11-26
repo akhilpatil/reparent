@@ -12,6 +12,8 @@ export default function Header() {
                     className="object-contain"
                     priority
                 />
+               
+
             </div>
         </header>
     );

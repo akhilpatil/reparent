@@ -42,7 +42,7 @@ export default function Processing() {
   }, [router]);
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-50">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-6 px-6 py-12 text-center max-w-md mx-auto">
         <div className="animate-pulse">
           <div className="w-16 h-16 border-4 border-green-200 border-t-green-600 rounded-full mx-auto mb-6"></div>

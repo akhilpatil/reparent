@@ -26,9 +26,7 @@ export default function Questions() {
   }, []);
 
   const playChime = () => {
-    const chimes = ["/chime1.mp3", "/chime2.mp3", "/chime3.mp3"];
-    const randomChime = chimes[Math.floor(Math.random() * chimes.length)];
-    const audio = new Audio(randomChime);
+    const audio = new Audio("/chime2.mp3");
     audio.volume = 0.4; // Soft volume
     audio.play().catch(e => console.log("Audio play failed", e));
   };
@@ -61,7 +59,7 @@ export default function Questions() {
 
   if (!currentQuestion) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-[#fdfbf7] to-[#eef7f2]">
+      <div className="h-screen w-screen flex items-center justify-center">
         <div className="animate-pulse">
           <div className="w-16 h-16 border-4 border-green-200 border-t-[#a3b18a] rounded-full mx-auto mb-6"></div>
         </div>
@@ -74,7 +72,7 @@ export default function Questions() {
   const showLastMessage = currentQuestionIndex === questions.length - 1;
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-[#fdfbf7] to-[#eef7f2]">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-8 max-w-2xl px-6 py-8 text-left w-full">
         <div className="flex flex-col items-start gap-4">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#4a7c59] animate-fade-in">
@@ -91,7 +89,7 @@ export default function Questions() {
           </div>
 
           <div key={fadeKey} className="animate-fade-in">
-            <p className="text-3xl font-medium leading-snug text-[#1d3b33] mb-2" style={{ fontFamily: "var(--font-playfair)" }}>
+            <p className="text-3xl font-medium leading-snug text-[#1d3b33] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
               {currentQuestion.question}
             </p>
 

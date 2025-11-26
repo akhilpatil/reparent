@@ -17,7 +17,7 @@ export default function End() {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-[#fdfbf7] to-[#eef7f2]">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-8 px-6 py-12 text-center max-w-lg mx-auto">
         {!isExiting ? (
           <div className="animate-fade-in">

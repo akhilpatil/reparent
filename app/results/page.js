@@ -25,10 +25,10 @@ export default function Results() {
   }
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-gradient-to-br from-[#fdfbf7] to-[#eef7f2]">
+    <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-8 px-6 py-12 text-center max-w-lg mx-auto">
         <div className="animate-fade-in">
-          <h1 className="text-4xl font-bold text-[#1d3b33] mb-4" style={{ fontFamily: "var(--font-playfair)" }}>
+          <h1 className="text-4xl font-bold text-[#1d3b33] mb-4" style={{ fontFamily: "var(--font-heading)" }}>
             You are a <span className="text-[#4a7c59]">{archetype} Parent</span>
           </h1>
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
