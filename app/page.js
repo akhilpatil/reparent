@@ -9,15 +9,15 @@ export default function Welcome() {
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Start fading out after 2 seconds
+    // Start fading out after 2.5 seconds (1 sec slower than before)
     const fadeTimer = setTimeout(() => {
       setIsFading(true);
-    }, 1500);
+    }, 2500);
 
     // Remove splash screen after fade animation (e.g., 500ms)
     const removeTimer = setTimeout(() => {
       setShowSplash(false);
-    }, 2500);
+    }, 3500);
 
     return () => {
       clearTimeout(fadeTimer);
@@ -27,7 +27,7 @@ export default function Welcome() {
 
   if (showSplash) {
     return (
-      <div className={`h-screen w-screen flex items-center justify-center bg-[#fdfbf7] transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`h-screen w-screen flex items-center justify-center transition-opacity duration-500 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
         <div className="relative w-48 h-24 animate-pulse-soft">
           <Image
             src="/reparent-logo.png"
@@ -43,22 +43,26 @@ export default function Welcome() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center relative overflow-hidden animate-fade-in">
-
-      <div className="flex flex-col gap-8 px-6 py-12 text-center max-w-2xl mx-auto z-10">
-        <div className="animate-fade-in flex flex-col gap-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-black leading-tight tracking-tight" style={{ fontFamily: "var(--font-heading)" }}>
+      <div className="flex flex-col gap-10 px-6 py-12 text-center max-w-2xl mx-auto z-10">
+        <div className="flex flex-col gap-6">
+          <p className="text-2xl text-[#1d3b33] leading-relaxed animate-fade-in" style={{ fontFamily: "var(--font-heading)" }}>
             There is no right or wrong here — just gentle awareness.
-          </h1>
-          <p className="text-lg text-black/70 font-medium leading-relaxed" style={{ fontFamily: "var(--font-sans)" }}>
-            No judgment. No rush.<br />
+          </p>
+          <p className="text-xl text-gray-600 leading-relaxed animate-fade-in delay-500 opacity-0 fill-mode-forwards">
+            No judgment. No rush.
+          </p>
+          <p className="text-xl text-gray-600 leading-relaxed animate-fade-in delay-1000 opacity-0 fill-mode-forwards">
             Take a deep breath — this space is just for you.
           </p>
         </div>
-        <Link href="/intro" className="mt-4">
-          <button className="bg-[#1a1a1a] hover:bg-[#333333] text-white font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105" style={{ fontFamily: "var(--font-sans)" }}>
-            Continue
-          </button>
-        </Link>
+
+        <div className="animate-fade-in delay-1500 opacity-0 fill-mode-forwards mt-8">
+          <Link href="/intro">
+            <button className="bg-[#a3b18a] hover:bg-[#588157] text-white font-semibold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-md hover:shadow-lg">
+              Continue →
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

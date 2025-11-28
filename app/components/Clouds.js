@@ -31,7 +31,7 @@ const Clouds = () => {
     }, []);
 
     return (
-        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden [--cloud-scale:1] md:[--cloud-scale:2]">
             {clouds.map((cloud) => (
                 <img
                     key={cloud.id}
@@ -41,7 +41,7 @@ const Clouds = () => {
                     style={{
                         top: cloud.top,
                         left: cloud.left,
-                        transform: `scale(${cloud.scale})`,
+                        transform: `scale(calc(${cloud.scale} * var(--cloud-scale)))`,
                         opacity: cloud.opacity,
                         animationDuration: cloud.duration,
                         animationDelay: cloud.delay,

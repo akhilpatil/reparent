@@ -38,7 +38,7 @@ export default function End() {
               Return Home
             </button>
 
-            <p className="text-sm text-gray-500 mt-8">
+            <p className="text-sm text-gray-600 mt-8">
               Built with care by parents, psychologists, and dreamers.
             </p>
           </div>

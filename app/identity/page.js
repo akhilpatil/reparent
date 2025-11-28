@@ -25,7 +25,7 @@ export default function Identity() {
           <h1 className="text-3xl font-bold text-[#1d3b33] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
             Who are you reflecting as today?
           </h1>
-          <p className="text-sm text-gray-500 italic">
+          <p className="text-sm text-gray-600 italic">
             There’s no label that defines you — choose what feels closest right now.
           </p>
         </div>

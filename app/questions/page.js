@@ -94,18 +94,12 @@ export default function Questions() {
             </p>
 
             {/* Microcopy for specific questions or random gentle reminders */}
-            <p className="text-sm text-gray-500 italic animate-fade-in delay-500 opacity-0 fill-mode-forwards">
-              {currentQuestionIndex % 3 === 0 ? "Take a breath. There is no rush." : ""}
+            <p className="text-sm text-gray-600 italic animate-fade-in delay-500 opacity-0 fill-mode-forwards">
+              {currentQuestionIndex % 3 === 0 ? "Take a Deep breath, there is no rush." : ""}
             </p>
           </div>
 
-          {showHalfwayMessage && (
-            <div className="mt-4 p-5 bg-[#eef7f2] rounded-lg border-l-4 border-[#a3b18a] animate-fade-in">
-              <p className="text-[#1d3b33] font-medium">
-                Take a deep breath. You’re doing something deeply caring for you and your child.
-              </p>
-            </div>
-          )}
+
 
           {showLastMessage && (
             <div className="mt-4 p-5 bg-[#eef7f2] rounded-lg border-l-4 border-[#a3b18a] animate-fade-in">

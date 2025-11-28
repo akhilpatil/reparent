@@ -60,12 +60,12 @@ export default function EmailCapture() {
 
             <button
               onClick={handleSkip}
-              className="text-gray-400 hover:text-gray-600 text-sm underline mt-6 opacity-70 transition-opacity hover:opacity-100"
+              className="text-gray-600 hover:text-gray-800 text-sm underline mt-6 font-bold transition-colors"
             >
               Skip for now
             </button>
 
-            <p className="text-xs text-gray-400 mt-4">
+            <p className="text-xs text-gray-600 mt-4 font-bold">
               Your journey stays private — always.
             </p>
           </div>
