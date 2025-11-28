@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const archetypeData = {
   Overgiver: {
     title: "Overgiver",
+    image: "/architypes/overgiver.png",
     quote: "“I learned to love by giving parts of myself away.”",
     description: "You care deeply and give more than you receive. Your kindness is real, but it becomes heavy when you overextend to feel worthy or valued. Healing begins when you give yourself the same care you freely offer others — without guilt, without overthinking.",
     coreWound: "“Love must be earned through sacrifice.”",
@@ -20,6 +22,7 @@ const archetypeData = {
   },
   Controller: {
     title: "Controller",
+    image: "/architypes/controller.png",
     quote: "“If I manage everything, maybe nothing will fall apart again.”",
     description: "You hold everything together — plans, emotions, people — because unpredictability once hurt you. You’re responsible and reliable, but you carry more than any one person should. When you soften your grip, you discover that safety can come not just from control, but from trust and support.",
     coreWound: "“If I don’t control it, I won’t be safe.”",
@@ -34,6 +37,7 @@ const archetypeData = {
   },
   Avoider: {
     title: "Avoider",
+    image: "/architypes/avoider.png",
     quote: "“When feelings get too loud, I disappear to survive.”",
     description: "You protect yourself by stepping back — from conflict, deep emotions, or closeness. It’s not disinterest, it’s a shield you built long ago. You want connection but fear being overwhelmed or misunderstood. Healing happens when you stay present long enough for someone to truly know you.",
     coreWound: "“My emotions don’t matter, so distance keeps me safe.”",
@@ -48,6 +52,7 @@ const archetypeData = {
   },
   Conscious: {
     title: "Conscious / Balanced",
+    image: "/architypes/balanced.png",
     quote: "“I respond, not react — and I don’t lose myself in love.”",
     description: "You move through life with awareness and emotional clarity. You pause, reflect, and choose your responses instead of being driven by old patterns. This doesn’t mean you’re perfect — it means you’re present, growing, and connected to yourself. You honour your needs while respecting others.",
     coreWound: "“I must stay aware so I don’t repeat the past.”",
@@ -84,10 +89,20 @@ export default function Results() {
 
         {/* Header Section */}
         <div className="px-8 py-10 text-center relative overflow-hidden" style={{ backgroundColor: data.palette.secondary + '33' }}>
-          <div className="relative z-10">
+          <div className="relative z-10 flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: "var(--font-heading)", color: data.palette.primary }}>
               {data.title}
             </h1>
+
+            <div className="relative w-64 h-64 mb-6 shadow-lg rounded-2xl overflow-hidden">
+              <Image
+                src={data.image}
+                alt={`${data.title} Archetype`}
+                fill
+                className="object-cover"
+              />
+            </div>
+
             <p className="text-xl italic font-medium leading-relaxed px-2 md:px-8" style={{ color: data.palette.text, opacity: 0.9, fontFamily: "var(--font-playfair)" }}>
               {data.quote}
             </p>
@@ -116,7 +131,7 @@ export default function Results() {
             </div>
 
             {/* Healing Direction */}
-            <div className="p-6 rounded-2xl transition-transform hover:scale-[1.02] duration-300" style={{ backgroundColor: data.palette.background, borderLeft: `4px solid ${data.palette.primary}` }}>
+            <div className="p-6 rounded-2xl transition-transform hover:scale-[1.02] duration-300" style={{ backgroundColor: data.palette.background, borderLeft: `4px solid ${data.palette.primary} ` }}>
               <h3 className="text-xs font-bold uppercase tracking-[0.15em] mb-3" style={{ color: data.palette.primary }}>
                 Healing Direction
               </h3>
