@@ -6,9 +6,16 @@ import { useRouter } from "next/navigation";
 export default function EmailCapture() {
   const [email, setEmail] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [archetype, setArchetype] = useState("");
   const router = useRouter();
 
   useEffect(() => {
+    // Get archetype from localStorage
+    const savedArchetype = localStorage.getItem("result.archetype");
+    if (savedArchetype) {
+      setArchetype(savedArchetype);
+    }
+
     // Delay form appearance for breathing pause
     const timer = setTimeout(() => {
       setShowForm(true);
@@ -21,14 +28,18 @@ export default function EmailCapture() {
     if (email) {
       localStorage.setItem("user.email", email);
 
-      // Save to Google Sheets
+      // Save to Google Sheets and send email via Resend
       try {
         await fetch('/api/save-email', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ email })
+          body: JSON.stringify({
+            email,
+            archetype: archetype || 'Unknown',
+            userName: '' // You can add a name field if you want
+          })
         });
       } catch (error) {
         console.error('Failed to save email:', error);

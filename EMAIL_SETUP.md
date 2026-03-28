@@ -1,6 +1,10 @@
-# Email Collection Setup (100% Free)
+# Email Collection & Automated Emails Setup
 
-## Setup Instructions (5 minutes)
+This guide covers:
+- 📊 Saving emails to Google Sheets (free)
+- 📧 Sending automated emails via Resend
+
+## Part 1: Google Sheets Setup (5 minutes)
 
 ### Step 1: Create a Google Sheet
 
@@ -88,3 +92,112 @@ Now when users submit their email, it will automatically be saved to your Google
 1. Check the Apps Script execution logs: Extensions → Apps Script → Executions
 2. Make sure the deployment is set to "Anyone" access
 3. Verify the webhook URL in Vercel environment variables
+
+---
+
+# Part 2: Resend Setup (Automated Emails)
+
+## Step 1: Get Your Resend API Key
+
+1. Go to [resend.com](https://resend.com) and log in
+2. Navigate to **API Keys** in the dashboard
+3. Click **Create API Key**
+4. Give it a name (e.g., "Reparent Production")
+5. Select **Sending access**
+6. Click **Add**
+7. **Copy the API key** (it starts with `re_...`)
+   ⚠️ You won't be able to see it again!
+
+## Step 2: Verify Your Domain (Required for Production)
+
+### Option A: Use Your Own Domain (Recommended)
+1. In Resend dashboard, go to **Domains**
+2. Click **Add Domain**
+3. Enter your domain (e.g., `yourdomain.com`)
+4. Add the DNS records shown to your domain provider
+5. Wait for verification (usually 5-10 minutes)
+6. Your from email will be: `Reparent <hello@yourdomain.com>`
+
+### Option B: Use Resend's Test Domain (For Testing Only)
+- Free tier includes `onboarding@resend.dev`
+- Limited to 100 emails/day
+- Good for testing, but not recommended for production
+
+## Step 3: Add Environment Variables to Vercel
+
+1. Go to your Vercel dashboard
+2. Select your project
+3. Go to **Settings** → **Environment Variables**
+4. Add these variables:
+
+**Required:**
+- **Name**: `RESEND_API_KEY`
+- **Value**: [Your API key from Step 1]
+
+**Required (if using your own domain):**
+- **Name**: `RESEND_FROM_EMAIL`
+- **Value**: `Reparent <hello@yourdomain.com>`
+
+**Optional (for email links):**
+- **Name**: `NEXT_PUBLIC_SITE_URL`
+- **Value**: `https://yourdomain.com`
+
+5. Save and redeploy your app
+
+## Step 4: Test It!
+
+1. Go to your site
+2. Complete the quiz
+3. Submit your email
+4. Check your inbox! 📬
+
+## What Users Will Receive
+
+✉️ A beautifully designed email with:
+- Their archetype title and quote
+- Personalized message
+- Link back to their results
+- Next steps for their journey
+
+## Email Template Customization
+
+The email template is in `app/lib/email-template.js`
+
+You can customize:
+- Colors (matches each archetype)
+- Content and messaging
+- Call-to-action buttons
+- Footer text
+
+## Resend Free Tier Limits
+
+- ✅ 3,000 emails/month
+- ✅ 100 emails/day
+- ✅ Perfect for getting started!
+
+## Monitoring Your Emails
+
+1. Go to Resend dashboard
+2. Click **Logs** to see all sent emails
+3. Check delivery status, opens, clicks, etc.
+
+## Troubleshooting Resend
+
+**Emails not sending?**
+1. Check Resend dashboard → Logs for errors
+2. Verify API key is correct in Vercel environment variables
+3. Make sure domain is verified (if using custom domain)
+4. Check email went to spam folder
+
+**Want to test without sending real emails?**
+- Use your own email address first
+- Check Resend logs to confirm delivery
+
+---
+
+## 🎉 All Done!
+
+Now your app:
+1. ✅ Saves emails to Google Sheets
+2. ✅ Sends beautiful automated emails via Resend
+3. ✅ Provides a seamless user experience
