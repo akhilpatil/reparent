@@ -25,14 +25,7 @@ export default function Questions() {
     });
   }, []);
 
-  const playChime = () => {
-    const audio = new Audio("/chime2.mp3");
-    audio.volume = 0.4; // Soft volume
-    audio.play().catch(e => console.log("Audio play failed", e));
-  };
-
   const handleAnswer = (value) => {
-    playChime();
     const newAnswers = { ...answers, [currentQuestionIndex + 1]: value };
     setAnswers(newAnswers);
     localStorage.setItem("answers", JSON.stringify(newAnswers));
@@ -75,9 +68,22 @@ export default function Questions() {
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-8 max-w-2xl px-6 py-8 text-left w-full">
         <div className="flex flex-col items-start gap-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#4a7c59] animate-fade-in">
-            Question {currentQuestionIndex + 1} of {questions.length}
-          </p>
+          <div className="flex items-center gap-4 w-full">
+            {currentQuestionIndex > 0 && (
+              <button
+                onClick={() => setCurrentQuestionIndex(prev => prev - 1)}
+                className="p-2 rounded-full hover:bg-gray-100 transition-colors text-[#4a7c59]"
+                aria-label="Previous question"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+              </button>
+            )}
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#4a7c59] animate-fade-in">
+              Question {currentQuestionIndex + 1} of {questions.length}
+            </p>
+          </div>
 
           <div className="mb-6 w-full">
             <div className="h-1.5 w-full rounded-full bg-green-100">

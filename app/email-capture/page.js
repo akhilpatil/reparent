@@ -16,11 +16,24 @@ export default function EmailCapture() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (email) {
       localStorage.setItem("user.email", email);
-      console.log("Email captured:", email);
+
+      // Save to Google Sheets
+      try {
+        await fetch('/api/save-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email })
+        });
+      } catch (error) {
+        console.error('Failed to save email:', error);
+        // Continue anyway - don't block user flow
+      }
     }
     router.push("/end");
   };
