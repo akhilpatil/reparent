@@ -9,6 +9,10 @@
   /* Off-white/Ivory */
   --color-accent: #d4a373;
   /* Gold/Earth tone */
+  --font-playfair: Georgia, "Times New Roman", serif;
+  --font-inter: Arial, Helvetica, sans-serif;
+  --font-manrope: "Trebuchet MS", Arial, sans-serif;
+  --font-geist-mono: "Courier New", monospace;
 }
 
 @theme inline {

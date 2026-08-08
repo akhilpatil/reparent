@@ -1,23 +1,4 @@
-import { Playfair_Display, Inter, Manrope } from "next/font/google";
 import "./globals.css";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-});
 
 export const metadata = {
   title: "Reparent - Parenting Reflection",
@@ -29,7 +10,7 @@ import Clouds from "./components/Clouds";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${inter.variable} ${manrope.variable} antialiased font-sans`}>
+      <body className="antialiased font-sans">
         <Clouds />
         <div className="relative z-10">
           {children}
