@@ -68,7 +68,7 @@ export default function Questions() {
     <div className="h-screen w-screen flex items-center justify-center">
       <div className="flex flex-col gap-8 max-w-2xl px-6 py-8 text-left w-full">
         <div className="flex flex-col items-start gap-4">
-          <div className="flex items-center gap-4 w-full">
+          <div className="flex min-h-9 w-full items-center gap-4">
             {currentQuestionIndex > 0 && (
               <button
                 onClick={() => setCurrentQuestionIndex(prev => prev - 1)}
@@ -80,6 +80,7 @@ export default function Questions() {
                 </svg>
               </button>
             )}
+            {currentQuestionIndex === 0 && <span aria-hidden="true" className="h-9 w-9" />}
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#4a7c59] animate-fade-in">
               Question {currentQuestionIndex + 1} of {questions.length}
             </p>
@@ -94,26 +95,27 @@ export default function Questions() {
             </div>
           </div>
 
-          <div key={fadeKey} className="animate-fade-in">
-            <p className="text-3xl font-medium leading-snug text-[#1d3b33] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
-              {currentQuestion.question}
-            </p>
+          {/* Keep this stage a consistent height so question-specific messages do not move the options. */}
+          <div className="relative min-h-[260px] w-full sm:min-h-[220px]">
+            <div key={fadeKey} className="animate-fade-in">
+              <p className="text-3xl font-medium leading-snug text-[#1d3b33] mb-2" style={{ fontFamily: "var(--font-heading)" }}>
+                {currentQuestion.question}
+              </p>
 
-            {/* Microcopy for specific questions or random gentle reminders */}
-            <p className="text-sm text-gray-600 italic animate-fade-in delay-500 opacity-0 fill-mode-forwards">
-              {currentQuestionIndex % 3 === 0 ? "Take a Deep breath, there is no rush." : ""}
-            </p>
-          </div>
-
-
-
-          {showLastMessage && (
-            <div className="mt-4 p-5 bg-[#eef7f2] rounded-lg border-l-4 border-[#a3b18a] animate-fade-in">
-              <p className="text-[#1d3b33] font-medium">
-                Last one! You’re doing something rare — choosing awareness over reaction.
+              {/* Microcopy for specific questions or random gentle reminders */}
+              <p className="text-sm text-gray-600 italic animate-fade-in delay-500 opacity-0 fill-mode-forwards">
+                {currentQuestionIndex % 3 === 0 ? "Take a Deep breath, there is no rush." : ""}
               </p>
             </div>
-          )}
+
+            {showLastMessage && (
+              <div className="absolute inset-x-0 bottom-0 rounded-lg border-l-4 border-[#a3b18a] bg-[#eef7f2] p-5 animate-fade-in">
+                <p className="font-medium text-[#1d3b33]">
+                  Last one! You’re doing something rare — choosing awareness over reaction.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="flex flex-col w-full max-w-lg mx-auto gap-3 mt-4">
