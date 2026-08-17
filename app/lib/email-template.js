@@ -1,29 +1,48 @@
 // Email template for Reparent Guide
-export function getReparentEmail(archetype, userName = '') {
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return entities[character];
+  });
+}
+
+export function getReparentEmail(
+  archetype,
+  userName = "",
+  siteUrl = "https://reparent.app",
+) {
   const archetypeInfo = {
     Overgiver: {
       title: "The Overgiver",
       quote: "I learned to love by giving parts of myself away.",
-      color: "#D8A7B1"
+      color: "#D8A7B1",
     },
     Controller: {
       title: "The Controller",
       quote: "If I manage everything, maybe nothing will fall apart again.",
-      color: "#1E5F74"
+      color: "#1E5F74",
     },
     Avoider: {
       title: "The Avoider",
       quote: "When feelings get too loud, I disappear to survive.",
-      color: "#3A5A40"
+      color: "#3A5A40",
     },
     Conscious: {
       title: "Conscious / Balanced",
       quote: "I respond, not react — and I don't lose myself in love.",
-      color: "#C7A86C"
-    }
+      color: "#C7A86C",
+    },
   };
 
   const data = archetypeInfo[archetype] || archetypeInfo.Conscious;
+  const safeUserName = escapeHtml(userName);
+  const safeSiteUrl = String(siteUrl).replace(/\/$/, "");
 
   return `
 <!DOCTYPE html>
@@ -55,7 +74,7 @@ export function getReparentEmail(archetype, userName = '') {
           <tr>
             <td style="padding: 40px;">
               <p style="margin: 0 0 20px; font-size: 16px; color: #1f2937; line-height: 1.8;">
-                ${userName ? `Hi ${userName},` : 'Hi there,'}
+                ${safeUserName ? `Hi ${safeUserName},` : "Hi there,"}
               </p>
 
               <p style="margin: 0 0 20px; font-size: 16px; color: #1f2937; line-height: 1.8;">
@@ -71,7 +90,7 @@ export function getReparentEmail(archetype, userName = '') {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
                 <tr>
                   <td align="center">
-                    <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://yoursite.com'}/results"
+                    <a href="${safeSiteUrl}/results/"
                        style="display: inline-block; padding: 16px 32px; background-color: ${data.color}; color: #ffffff; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 16px;">
                       View Your Full Results →
                     </a>

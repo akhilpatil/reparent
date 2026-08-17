@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "reparent",
+  "pages_build_output_dir": "./out",
+  "compatibility_date": "2026-08-08",
+  "vars": {
+    "ALLOWED_ORIGINS": "https://reparent.app,https://reparent.pages.dev,https://ac7c3964.reparent.pages.dev,https://agent-cloudflare-static-lead.reparent.pages.dev"
+  }
+}
